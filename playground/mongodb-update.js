@@ -29,26 +29,26 @@ MongoClient.connect(
     //     console.log(result);
     //   });
 
-    db.collection('Users')
-      .findOneAndUpdate(
-        {
-          _id: new ObjectID('5c48220f72fb6a3cf65cb469')
-        },
-        {
-          $set: {
-            name: 'Marcus'
-          },
-          $inc: {
-            age: 1
-          }
-        },
-        {
-          returnOriginal: false
-        }
-      )
-      .then(result => {
-        console.log(result);
-      });
+    // db.collection('Users')
+    //   .findOneAndUpdate(
+    //     {
+    //       _id: new ObjectID('5c48220f72fb6a3cf65cb469')
+    //     },
+    //     {
+    //       $set: {
+    //         name: 'Marcus'
+    //       },
+    //       $inc: {
+    //         age: 1
+    //       }
+    //     },
+    //     {
+    //       returnOriginal: false
+    //     }
+    //   )
+    //   .then(result => {
+    //     console.log(result);
+    //   });
 
     client.close();
   }
