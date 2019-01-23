@@ -34,13 +34,13 @@ MongoClient.connect(
 
     // db.collection('Users').deleteMany({ name: 'Marcus' });
 
-    db.collection('Users')
-      .findOneAndDelete({
-        _id: new ObjectID('5c4825058722d641c7e982ae')
-      })
-      .then(result => {
-        console.log(JSON.stringify(result, undefined, 2));
-      });
+    // db.collection('Users')
+    //   .findOneAndDelete({
+    //     _id: new ObjectID('5c4825058722d641c7e982ae')
+    //   })
+    //   .then(result => {
+    //     console.log(JSON.stringify(result, undefined, 2));
+    //   });
 
     client.close();
   }
