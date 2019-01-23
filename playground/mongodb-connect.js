@@ -1,7 +1,16 @@
-const mongoClient = require('mongodb').MongoClient;
+// const mongoClient = require('mongodb').MongoClient;
+const { MongoClient, ObjectID } = require('mongodb');
 
-mongoClient.connect(
+var obj = new ObjectID();
+console.log(obj);
+
+// var user = { name: 'Marcus', age: 99 };
+// var { name } = user;
+// console.log(name);
+
+MongoClient.connect(
   'mongodb://localhost:27017/TodoApp',
+  { useNewUrlParser: true },
   (err, client) => {
     if (err) {
       return console.log('Unable to connect to MongoDB server');
@@ -24,20 +33,22 @@ mongoClient.connect(
     // );
 
     // Insert new doc into Users(name, age, location)
-    db.collection('Users').insertOne(
-      {
-        name: 'Marcus',
-        age: 25,
-        location: 'Hong Kong'
-      },
-      (err, result) => {
-        if (err) {
-          return console.log('Unable to insert user', err);
-        }
+    // db.collection('Users').insertOne(
+    //   {
+    //     // _id: 123,
+    //     name: 'Marcus',
+    //     age: 25,
+    //     location: 'Hong Kong'
+    //   },
+    //   (err, result) => {
+    //     if (err) {
+    //       return console.log('Unable to insert user', err);
+    //     }
 
-        console.log(JSON.stringify(result.ops, undefined, 2));
-      }
-    );
+    //     console.log(JSON.stringify(result.ops, undefined, 2));
+    //     console.log(`Create at : ${result.ops[0]._id.getTimestamp()}`);
+    //   }
+    // );
 
     client.close();
   }
