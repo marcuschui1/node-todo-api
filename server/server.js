@@ -1,22 +1,31 @@
 const mongoose = require('mongoose');
 
 mongoose.Promise = global.Promise;
-mongoose.connect('mongodb://localhost:27017/TodoApp');
+mongoose.connect(
+  'mongodb://localhost:27017/TodoApp',
+  { useNewUrlParser: true }
+);
 
 var Todo = mongoose.model('Todo', {
   text: {
-    type: String
+    type: String,
+    required: true,
+    minlength: 1,
+    trim: true
   },
   completed: {
-    type: Boolean
+    type: Boolean,
+    default: false
   },
   completedAt: {
-    type: Number
+    type: Number,
+    default: null
   }
 });
 
 // var newTodo = new Todo({
-//   text: 'Eat an apple'
+//   //   text: 'Eat an apple'
+//   text: 'do some thing'
 // });
 
 // newTodo.save().then(
@@ -29,9 +38,10 @@ var Todo = mongoose.model('Todo', {
 // );
 
 // var otherTodo = new Todo({
-//   text: 'Feed the dog',
-//   completed: true,
-//   completedAt: 123
+//   //   text: 'Feed the dog',
+//   //   completed: true,
+//   //   completedAt: 123
+//   text: 'to do something'
 // });
 
 // otherTodo.save().then(
@@ -42,3 +52,26 @@ var Todo = mongoose.model('Todo', {
 //     console.log('Unable to save', err);
 //   }
 // );
+
+// User model
+var User = mongoose.model('User', {
+  email: {
+    type: String,
+    required: true,
+    minlength: 1,
+    trim: true
+  }
+});
+
+var newUser = new User({
+  email: 'marcuschui@icloud.com'
+});
+
+newUser.save().then(
+  doc => {
+    console.log(JSON.stringify(doc, undefined, 2));
+  },
+  err => {
+    console.log('Unable to save', err);
+  }
+);
