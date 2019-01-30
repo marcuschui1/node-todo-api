@@ -14,6 +14,15 @@ var hashedPassword =
 bcrypt.compare(password, hashedPassword, (err, res) => {
   console.log(res);
 });
+
+bcrypt.compare(
+  'passwordgogogo',
+  '$2a$10$mZ347YRVHYToYSnosroSwe1dLD.y6htP0lOX2JK/DMlZbIXEpsway',
+  (err, res) => {
+    console.log('testaaaa ', res);
+  }
+);
+
 // data = { id: 100 };
 
 // var token = jwt.sign(data, '123abc');
