@@ -13,7 +13,6 @@ beforeEach(populateTodos);
 describe('POST /todos', () => {
   it('should create a new todo', done => {
     var text = 'Test todo text';
-
     request(app)
       .post('/todos')
       .set('x-auth', users[0].tokens[0].token)
@@ -35,7 +34,6 @@ describe('POST /todos', () => {
           .catch(err => done(err));
       });
   });
-
   it('should not create todo with invalid body data', done => {
     request(app)
       .post('/todos')
